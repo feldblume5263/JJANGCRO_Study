@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A1ED33F28C8DA740047701D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED33E28C8DA740047701D /* AppDelegate.swift */; };
+		2A1ED34128C8DA740047701D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED34028C8DA740047701D /* SceneDelegate.swift */; };
+		2A1ED34328C8DA740047701D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED34228C8DA740047701D /* ViewController.swift */; };
+		2A1ED34628C8DA740047701D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A1ED34428C8DA740047701D /* Main.storyboard */; };
+		2A1ED34828C8DA760047701D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A1ED34728C8DA760047701D /* Assets.xcassets */; };
+		2A1ED34B28C8DA760047701D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A1ED34928C8DA760047701D /* LaunchScreen.storyboard */; };
+		2A1ED35628C8DA760047701D /* SimpleMemo_TaekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED35528C8DA760047701D /* SimpleMemo_TaekTests.swift */; };
+		2A1ED36028C8DA760047701D /* SimpleMemo_TaekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED35F28C8DA760047701D /* SimpleMemo_TaekUITests.swift */; };
+		2A1ED36228C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED36128C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A1ED35228C8DA760047701D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A1ED33328C8DA740047701D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A1ED33A28C8DA740047701D;
+			remoteInfo = SimpleMemo_Taek;
+		};
+		2A1ED35C28C8DA760047701D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A1ED33328C8DA740047701D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A1ED33A28C8DA740047701D;
+			remoteInfo = SimpleMemo_Taek;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A1ED33B28C8DA740047701D /* SimpleMemo_Taek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMemo_Taek.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1ED33E28C8DA740047701D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A1ED34028C8DA740047701D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2A1ED34228C8DA740047701D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A1ED34528C8DA740047701D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A1ED34728C8DA760047701D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A1ED34A28C8DA760047701D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A1ED34C28C8DA760047701D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A1ED35128C8DA760047701D /* SimpleMemo_TaekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemo_TaekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1ED35528C8DA760047701D /* SimpleMemo_TaekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMemo_TaekTests.swift; sourceTree = "<group>"; };
+		2A1ED35B28C8DA760047701D /* SimpleMemo_TaekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMemo_TaekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1ED35F28C8DA760047701D /* SimpleMemo_TaekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMemo_TaekUITests.swift; sourceTree = "<group>"; };
+		2A1ED36128C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMemo_TaekUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A1ED33828C8DA740047701D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED34E28C8DA760047701D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED35828C8DA760047701D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A1ED33228C8DA740047701D = {
+			isa = PBXGroup;
+			children = (
+				2A1ED33D28C8DA740047701D /* SimpleMemo_Taek */,
+				2A1ED35428C8DA760047701D /* SimpleMemo_TaekTests */,
+				2A1ED35E28C8DA760047701D /* SimpleMemo_TaekUITests */,
+				2A1ED33C28C8DA740047701D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A1ED33C28C8DA740047701D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED33B28C8DA740047701D /* SimpleMemo_Taek.app */,
+				2A1ED35128C8DA760047701D /* SimpleMemo_TaekTests.xctest */,
+				2A1ED35B28C8DA760047701D /* SimpleMemo_TaekUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A1ED33D28C8DA740047701D /* SimpleMemo_Taek */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED33E28C8DA740047701D /* AppDelegate.swift */,
+				2A1ED34028C8DA740047701D /* SceneDelegate.swift */,
+				2A1ED34228C8DA740047701D /* ViewController.swift */,
+				2A1ED34428C8DA740047701D /* Main.storyboard */,
+				2A1ED34728C8DA760047701D /* Assets.xcassets */,
+				2A1ED34928C8DA760047701D /* LaunchScreen.storyboard */,
+				2A1ED34C28C8DA760047701D /* Info.plist */,
+			);
+			path = SimpleMemo_Taek;
+			sourceTree = "<group>";
+		};
+		2A1ED35428C8DA760047701D /* SimpleMemo_TaekTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED35528C8DA760047701D /* SimpleMemo_TaekTests.swift */,
+			);
+			path = SimpleMemo_TaekTests;
+			sourceTree = "<group>";
+		};
+		2A1ED35E28C8DA760047701D /* SimpleMemo_TaekUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED35F28C8DA760047701D /* SimpleMemo_TaekUITests.swift */,
+				2A1ED36128C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift */,
+			);
+			path = SimpleMemo_TaekUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A1ED33A28C8DA740047701D /* SimpleMemo_Taek */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1ED36528C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_Taek" */;
+			buildPhases = (
+				2A1ED33728C8DA740047701D /* Sources */,
+				2A1ED33828C8DA740047701D /* Frameworks */,
+				2A1ED33928C8DA740047701D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleMemo_Taek;
+			productName = SimpleMemo_Taek;
+			productReference = 2A1ED33B28C8DA740047701D /* SimpleMemo_Taek.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A1ED35028C8DA760047701D /* SimpleMemo_TaekTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1ED36828C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_TaekTests" */;
+			buildPhases = (
+				2A1ED34D28C8DA760047701D /* Sources */,
+				2A1ED34E28C8DA760047701D /* Frameworks */,
+				2A1ED34F28C8DA760047701D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A1ED35328C8DA760047701D /* PBXTargetDependency */,
+			);
+			name = SimpleMemo_TaekTests;
+			productName = SimpleMemo_TaekTests;
+			productReference = 2A1ED35128C8DA760047701D /* SimpleMemo_TaekTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A1ED35A28C8DA760047701D /* SimpleMemo_TaekUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1ED36B28C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_TaekUITests" */;
+			buildPhases = (
+				2A1ED35728C8DA760047701D /* Sources */,
+				2A1ED35828C8DA760047701D /* Frameworks */,
+				2A1ED35928C8DA760047701D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A1ED35D28C8DA760047701D /* PBXTargetDependency */,
+			);
+			name = SimpleMemo_TaekUITests;
+			productName = SimpleMemo_TaekUITests;
+			productReference = 2A1ED35B28C8DA760047701D /* SimpleMemo_TaekUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A1ED33328C8DA740047701D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					2A1ED33A28C8DA740047701D = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					2A1ED35028C8DA760047701D = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 2A1ED33A28C8DA740047701D;
+					};
+					2A1ED35A28C8DA760047701D = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 2A1ED33A28C8DA740047701D;
+					};
+				};
+			};
+			buildConfigurationList = 2A1ED33628C8DA740047701D /* Build configuration list for PBXProject "SimpleMemo_Taek" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A1ED33228C8DA740047701D;
+			productRefGroup = 2A1ED33C28C8DA740047701D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A1ED33A28C8DA740047701D /* SimpleMemo_Taek */,
+				2A1ED35028C8DA760047701D /* SimpleMemo_TaekTests */,
+				2A1ED35A28C8DA760047701D /* SimpleMemo_TaekUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A1ED33928C8DA740047701D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1ED34B28C8DA760047701D /* LaunchScreen.storyboard in Resources */,
+				2A1ED34828C8DA760047701D /* Assets.xcassets in Resources */,
+				2A1ED34628C8DA740047701D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED34F28C8DA760047701D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED35928C8DA760047701D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A1ED33728C8DA740047701D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1ED34328C8DA740047701D /* ViewController.swift in Sources */,
+				2A1ED33F28C8DA740047701D /* AppDelegate.swift in Sources */,
+				2A1ED34128C8DA740047701D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED34D28C8DA760047701D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1ED35628C8DA760047701D /* SimpleMemo_TaekTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1ED35728C8DA760047701D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1ED36028C8DA760047701D /* SimpleMemo_TaekUITests.swift in Sources */,
+				2A1ED36228C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A1ED35328C8DA760047701D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A1ED33A28C8DA740047701D /* SimpleMemo_Taek */;
+			targetProxy = 2A1ED35228C8DA760047701D /* PBXContainerItemProxy */;
+		};
+		2A1ED35D28C8DA760047701D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A1ED33A28C8DA740047701D /* SimpleMemo_Taek */;
+			targetProxy = 2A1ED35C28C8DA760047701D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A1ED34428C8DA740047701D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A1ED34528C8DA740047701D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A1ED34928C8DA760047701D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A1ED34A28C8DA760047701D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A1ED36328C8DA760047701D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2A1ED36428C8DA760047701D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A1ED36628C8DA760047701D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleMemo_Taek/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-Taek";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A1ED36728C8DA760047701D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleMemo_Taek/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-Taek";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2A1ED36928C8DA760047701D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-TaekTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMemo_Taek.app/SimpleMemo_Taek";
+			};
+			name = Debug;
+		};
+		2A1ED36A28C8DA760047701D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-TaekTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleMemo_Taek.app/SimpleMemo_Taek";
+			};
+			name = Release;
+		};
+		2A1ED36C28C8DA760047701D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-TaekUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleMemo_Taek;
+			};
+			name = Debug;
+		};
+		2A1ED36D28C8DA760047701D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25YUTG4RN5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Taek.SimpleMemo-TaekUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SimpleMemo_Taek;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A1ED33628C8DA740047701D /* Build configuration list for PBXProject "SimpleMemo_Taek" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1ED36328C8DA760047701D /* Debug */,
+				2A1ED36428C8DA760047701D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A1ED36528C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_Taek" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1ED36628C8DA760047701D /* Debug */,
+				2A1ED36728C8DA760047701D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A1ED36828C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_TaekTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1ED36928C8DA760047701D /* Debug */,
+				2A1ED36A28C8DA760047701D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A1ED36B28C8DA760047701D /* Build configuration list for PBXNativeTarget "SimpleMemo_TaekUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1ED36C28C8DA760047701D /* Debug */,
+				2A1ED36D28C8DA760047701D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A1ED33328C8DA740047701D /* Project object */;
+}
