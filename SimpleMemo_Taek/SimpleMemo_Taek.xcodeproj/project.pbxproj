@@ -18,6 +18,7 @@
 		2A1ED36228C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED36128C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift */; };
 		2A1ED37328C8E2100047701D /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37228C8E2100047701D /* MemoData.swift */; };
 		2A1ED37728C8E5820047701D /* PreviewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37628C8E5820047701D /* PreviewExtension.swift */; };
+		2A1ED37928CAEEAF0047701D /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2A1ED36128C8DA760047701D /* SimpleMemo_TaekUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMemo_TaekUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2A1ED37228C8E2100047701D /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
 		2A1ED37628C8E5820047701D /* PreviewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewExtension.swift; sourceTree = "<group>"; };
+		2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +105,9 @@
 		2A1ED33D28C8DA740047701D /* SimpleMemo_Taek */ = {
 			isa = PBXGroup;
 			children = (
-				2A1ED37428C8E5220047701D /* Global */,
 				2A1ED33E28C8DA740047701D /* AppDelegate.swift */,
 				2A1ED34028C8DA740047701D /* SceneDelegate.swift */,
+				2A1ED37428C8E5220047701D /* Global */,
 				2A1ED37128C8DFFD0047701D /* Controller */,
 				2A1ED37028C8DFEB0047701D /* View */,
 				2A1ED36E28C8DFDF0047701D /* Model */,
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				2A1ED34428C8DA740047701D /* Main.storyboard */,
+				2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A1ED34328C8DA740047701D /* ViewController.swift in Sources */,
+				2A1ED37928CAEEAF0047701D /* MemoTableViewCell.swift in Sources */,
 				2A1ED37328C8E2100047701D /* MemoData.swift in Sources */,
 				2A1ED37728C8E5820047701D /* PreviewExtension.swift in Sources */,
 				2A1ED33F28C8DA740047701D /* AppDelegate.swift in Sources */,
