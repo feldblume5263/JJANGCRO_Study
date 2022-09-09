@@ -8,9 +8,9 @@
 import UIKit
 
 final class MemoTableViewCell: UITableViewCell {
-    private let titleLabel: UILabel = UILabel(frame: .zero)
-    private let contentLabel: UILabel = UILabel(frame: .zero)
-    private let dateLabel: UILabel = UILabel(frame: .zero)
+    public lazy var titleLabel: UILabel = UILabel(frame: .zero)
+    public lazy var contentLabel: UILabel = UILabel(frame: .zero)
+    public lazy var dateLabel: UILabel = UILabel(frame: .zero)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,7 +34,7 @@ private extension MemoTableViewCell {
         self.contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = .preferredFont(forTextStyle: .headline)
-        titleLabel.text = "제목"
+        titleLabel.textColor = .black
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -46,10 +46,10 @@ private extension MemoTableViewCell {
         self.contentView.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = .preferredFont(forTextStyle: .subheadline)
-        dateLabel.text = "2022. 09. 09"
+        dateLabel.textColor = .black
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
         ])
     }
     
@@ -57,10 +57,11 @@ private extension MemoTableViewCell {
         self.contentView.addSubview(contentLabel)
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.font = .preferredFont(forTextStyle: .subheadline)
-        contentLabel.text = "내용입니다.내용입니다.내용입니다.내용입니다.내용입니다."
+        contentLabel.textColor = .black
+        contentLabel.text = "adfadf"
         NSLayoutConstraint.activate([
             contentLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 10),
-            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             contentLabel.widthAnchor.constraint(equalToConstant: 200)
         ])
     }

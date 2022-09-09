@@ -18,6 +18,12 @@ import UIKit
         memoList.insert(MemoData(date: Date(), title: "메모5", "내용5"))
     }
     
+    func getMemo() -> [MemoData] {
+        return memoList.sorted {
+            $0.date < $1.date
+        }
+    }
+    
     func addNewMemo(date: Date, title: String, content: String?) {
         memoList.insert(MemoData(date: date, title: title, content))
     }
