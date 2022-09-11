@@ -16,7 +16,18 @@ final class MemoListViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
+    private var sortingOption: SortingOption = .date {
+        didSet {
+            switch sortingOption {
+            case .title:
+                memoDatas = self.memoList.getMemo(by: sortingOption)
+            case .date:
+                memoDatas = self.memoList.getMemo(by: sortingOption)
+            case .random:
+                memoDatas = self.memoList.getMemo(by: sortingOption)
+            }
+        }
+    }
     override func loadView() {
         super.loadView()
         tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -30,7 +41,7 @@ final class MemoListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.memoDatas = self.memoList.getMemo()
+        self.memoDatas = self.memoList.getMemo(by: self.sortingOption)
     }
 
 }
@@ -57,7 +68,7 @@ private extension MemoListViewController {
     
     func setMemoObserverToTableView() {
         observer = self.memoList.observe(\.memoList) { (data, change) in
-            self.memoDatas = self.memoList.getMemo()
+            self.memoDatas = self.memoList.getMemo(by: self.sortingOption)
         }
     }
 }
