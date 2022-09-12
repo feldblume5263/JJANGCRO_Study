@@ -21,6 +21,7 @@
 		2A1ED37928CAEEAF0047701D /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */; };
 		2A1ED37B28CB80A90047701D /* MemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37A28CB80A90047701D /* MemoList.swift */; };
 		2A1ED37D28CB82400047701D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED37C28CB82400047701D /* DateExtension.swift */; };
+		2A1ED38328CDE1FA0047701D /* SortingOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1ED38228CDE1FA0047701D /* SortingOptionsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		2A1ED37A28CB80A90047701D /* MemoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoList.swift; sourceTree = "<group>"; };
 		2A1ED37C28CB82400047701D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		2A1ED38228CDE1FA0047701D /* SortingOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOptionsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +153,9 @@
 		2A1ED37028C8DFEB0047701D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2A1ED38528CF2ABC0047701D /* MemoList */,
+				2A1ED38428CF2AA70047701D /* MemoOption */,
 				2A1ED34428C8DA740047701D /* Main.storyboard */,
-				2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +183,22 @@
 				2A1ED37C28CB82400047701D /* DateExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		2A1ED38428CF2AA70047701D /* MemoOption */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED38228CDE1FA0047701D /* SortingOptionsTableViewCell.swift */,
+			);
+			path = MemoOption;
+			sourceTree = "<group>";
+		};
+		2A1ED38528CF2ABC0047701D /* MemoList */ = {
+			isa = PBXGroup;
+			children = (
+				2A1ED37828CAEEAF0047701D /* MemoTableViewCell.swift */,
+			);
+			path = MemoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A1ED34328C8DA740047701D /* MemoListViewController.swift in Sources */,
+				2A1ED38328CDE1FA0047701D /* SortingOptionsTableViewCell.swift in Sources */,
 				2A1ED37D28CB82400047701D /* DateExtension.swift in Sources */,
 				2A1ED37928CAEEAF0047701D /* MemoTableViewCell.swift in Sources */,
 				2A1ED37328C8E2100047701D /* MemoData.swift in Sources */,

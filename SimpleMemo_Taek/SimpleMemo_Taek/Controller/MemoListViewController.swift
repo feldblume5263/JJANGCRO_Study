@@ -12,7 +12,7 @@ final class MemoListViewController: UIViewController {
     private var tableView: UITableView!
     private var observer: NSKeyValueObservation!
     lazy private var memoDatas: [MemoData] = [] {
-        willSet {
+        didSet {
             tableView.reloadData()
         }
     }
