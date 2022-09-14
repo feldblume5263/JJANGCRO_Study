@@ -7,11 +7,20 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func render() {
+        view.backgroundColor = .systemBackground
+    }
+    
+    override func configUI() {
+        self.navigationItem.title = "메모"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 
