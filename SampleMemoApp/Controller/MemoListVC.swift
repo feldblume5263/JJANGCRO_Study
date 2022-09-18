@@ -64,6 +64,7 @@ class ViewController: UIViewController {
         let memoCount = numberFormatter.string(for: localRealm.objects(MemoList.self).count)!
         navigationItem.title = "\(memoCount)개 Memo"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false // 스크롤 할 때 서치부분은 남겨두기
         
         // 뒤로가는 버튼 셋팅
         let backBarButtonItem = UIBarButtonItem(title: "메모", style: .plain, target: self, action: nil)
