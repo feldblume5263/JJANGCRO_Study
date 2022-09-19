@@ -50,7 +50,8 @@ final class MemoTableViewCell: UITableViewCell {
         addSubview(titleLabel)
         titleLabel.constraint(top: self.topAnchor,
                               leading: self.leadingAnchor,
-                              padding: UIEdgeInsets(top: 6, left: 10, bottom: 0, right: 0))
+                              trailing: self.trailingAnchor,
+                              padding: UIEdgeInsets(top: 6, left: 10, bottom: 0, right: 10))
         
         addSubview(createdDate)
         createdDate.constraint(top: titleLabel.bottomAnchor,
