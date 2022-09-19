@@ -12,7 +12,7 @@ import Foundation
     var body: String
     var createdDate: Date
     
-    init(title: String, body: String, _ createdDate: Date) {
+    init(title: String, body: String, createdDate: Date) {
         self.title = title
         self.body = body
         self.createdDate = createdDate

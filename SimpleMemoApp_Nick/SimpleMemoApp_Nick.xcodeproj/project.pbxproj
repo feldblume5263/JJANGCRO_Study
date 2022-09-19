@@ -16,6 +16,8 @@
 		7926BE5328D238FA00B300E2 /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE5228D238FA00B300E2 /* MemoData.swift */; };
 		7926BE5528D23DA500B300E2 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE5428D23DA500B300E2 /* UIView+Constraint.swift */; };
 		7926BE5728D23F7300B300E2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE5628D23F7300B300E2 /* BaseViewController.swift */; };
+		7926BE5B28D2428000B300E2 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE5A28D2428000B300E2 /* MemoTableViewCell.swift */; };
+		79D41E0428D864DB00DEB68D /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D41E0328D864DB00DEB68D /* MemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		7926BE5228D238FA00B300E2 /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
 		7926BE5428D23DA500B300E2 /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		7926BE5628D23F7300B300E2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7926BE5A28D2428000B300E2 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
+		79D41E0328D864DB00DEB68D /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		7926BE5028D238A300B300E2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				79D41E0328D864DB00DEB68D /* MemoViewController.swift */,
 				7926BE3F28D2379900B300E2 /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				7926BE4128D2379900B300E2 /* Main.storyboard */,
+				7926BE5A28D2428000B300E2 /* MemoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,9 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79D41E0428D864DB00DEB68D /* MemoViewController.swift in Sources */,
 				7926BE4028D2379900B300E2 /* MainViewController.swift in Sources */,
 				7926BE5328D238FA00B300E2 /* MemoData.swift in Sources */,
 				7926BE5528D23DA500B300E2 /* UIView+Constraint.swift in Sources */,
+				7926BE5B28D2428000B300E2 /* MemoTableViewCell.swift in Sources */,
 				7926BE3C28D2379900B300E2 /* AppDelegate.swift in Sources */,
 				7926BE3E28D2379900B300E2 /* SceneDelegate.swift in Sources */,
 				7926BE5728D23F7300B300E2 /* BaseViewController.swift in Sources */,
