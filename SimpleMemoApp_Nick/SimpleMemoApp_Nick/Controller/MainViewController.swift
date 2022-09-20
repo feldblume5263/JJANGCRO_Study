@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: BaseViewController {
+class MainViewController: UIViewController {
 
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
