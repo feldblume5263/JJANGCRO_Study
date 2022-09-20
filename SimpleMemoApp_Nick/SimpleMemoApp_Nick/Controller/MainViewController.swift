@@ -100,8 +100,10 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
-            print("did made viewController")
-            print("index path : \(indexPath)")
+            viewController.memoTextView.text = """
+            \(memos[indexPath.row].title)
+            \(memos[indexPath.row].body)
+            """
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
