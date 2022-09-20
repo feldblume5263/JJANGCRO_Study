@@ -15,11 +15,11 @@ class MemoViewController: UIViewController {
         configUI()
     }
     
-    func render() {
+    private func render() {
         
     }
     
-    func configUI() {
+    private func configUI() {
         self.navigationController?.navigationBar.tintColor = .systemYellow
     }
 }
