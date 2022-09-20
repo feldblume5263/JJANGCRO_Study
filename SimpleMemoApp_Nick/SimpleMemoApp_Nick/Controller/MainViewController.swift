@@ -46,9 +46,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        render()
+        configUI()
     }
     
-    override func render() {
+    func render() {
         view.addSubview(tableView)
         tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
@@ -61,7 +63,7 @@ class MainViewController: UIViewController {
         itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
     }
     
-    override func configUI() {
+    func configUI() {
         view.backgroundColor = .systemBackground
         self.navigationItem.title = "메모"
         navigationController?.navigationBar.prefersLargeTitles = true
