@@ -27,7 +27,7 @@
         <!--Memo View Controller-->
         <scene sceneID="d4L-pa-77b">
             <objects>
-                <viewController storyboardIdentifier="MemoView" id="mmM-DP-1v2" customClass="MemoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemoView" id="mmM-DP-1v2" customClass="MemoViewController" customModule="SimpleMemoApp_Nick" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ogs-bP-m1t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

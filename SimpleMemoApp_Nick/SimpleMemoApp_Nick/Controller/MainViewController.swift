@@ -29,6 +29,20 @@ class MainViewController: BaseViewController {
         MemoData(title: "We're going to be amazing developers 🧑🏻‍💻", body: "이것은 바디!!!", createdDate: Date()),
     ]
     
+    private let bottomBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.borderWidth = 0.3
+        return view
+    }()
+    
+    private let itemNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .preferredFont(forTextStyle: .caption2)
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -38,7 +52,13 @@ class MainViewController: BaseViewController {
         view.addSubview(tableView)
         tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
-//        view.addSubview(bottomView)
+        view.addSubview(bottomBarView)
+        bottomBarView.constraint(leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        bottomBarView.constraint(bottomBarView.heightAnchor, constant: 75)
+        
+        bottomBarView.addSubview(itemNumberLabel)
+        itemNumberLabel.text = "\(memos.count) 개의 메모"
+        itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
     }
     
     override func configUI() {
@@ -77,9 +97,10 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
-//            print("HI")
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//        }
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
+            print("did made viewController")
+            print("index path : \(indexPath)")
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
