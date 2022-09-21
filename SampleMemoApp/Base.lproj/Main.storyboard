@@ -27,7 +27,7 @@
         <!--Write Memo View Controller-->
         <scene sceneID="qSV-QX-76Y">
             <objects>
-                <viewController storyboardIdentifier="WriteMemo" id="Jch-kr-tG9" customClass="WriteMemoViewController" customModule="SampleMemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteMemoViewController" id="Jch-kr-tG9" customClass="WriteMemoViewController" customModule="SampleMemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C11-RD-kUp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

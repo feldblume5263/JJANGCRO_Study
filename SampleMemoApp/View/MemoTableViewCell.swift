@@ -17,25 +17,22 @@ final class MemoTableViewCell: UITableViewCell {
     
     static let identifier = "MemoTableViewCell"
     
-    private let memoTitleLabel: UILabel = {
+    let memoTitleLabel: UILabel = {
         let memoTitleLabel = UILabel()
         memoTitleLabel.textColor = .blue
         memoTitleLabel.font = .preferredFont(forTextStyle: .headline)
-        memoTitleLabel.text = "제목제목"
         return memoTitleLabel
     }()
-    private let memoDateLabel: UILabel = {
+    let memoDateLabel: UILabel = {
         let memoDateLabel = UILabel()
         memoDateLabel.textColor = .black
         memoDateLabel.font = .preferredFont(forTextStyle: .subheadline)
-        memoDateLabel.text = "2022.09.16"
         return memoDateLabel
     }()
-    private let memoContentLabel: UILabel = {
+    let memoContentLabel: UILabel = {
         let memoContentLabel = UILabel()
         memoContentLabel.textColor = .black
         memoContentLabel.font = .preferredFont(forTextStyle: .subheadline)
-        memoContentLabel.text = "내용내용내용내용"
         return memoContentLabel
     }()
     

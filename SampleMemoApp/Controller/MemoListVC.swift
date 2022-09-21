@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         backBarButtonItem.tintColor = .systemOrange
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
+        tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "memoDate", ascending: false)
     }
     
     // layout lifeCycle은 크게 3가지로 나뉘어 지는데 Update -> layout -> Draw로 이루어져 있습니다.
@@ -96,8 +97,40 @@ class ViewController: UIViewController {
         memoTableView.frame = view.bounds
     }
     
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
     @objc func writeMemoButtonClicked(_sender: Any) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WriteMemo") else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WriteMemoViewController") as! WriteMemoViewController
+        vc.backActionHandler = {
+            var title = ""
+            var content = ""
+            if vc.memoTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                return
+            }
+            else if !vc.memoTextView.text!.contains("\n"){
+                title = vc.memoTextView.text!
+            }
+            // 개행 있을 경우
+            else{
+                title = String(vc.memoTextView.text!.split(separator: "\n").first!) //첫번째 줄만
+                content = String(vc.memoTextView.text!.dropFirst(title.count+1)) // 제목 자르고 넣음
+            }
+            
+            let task = MemoList(memoTitle: title, memoContent: content, memoAll: vc.memoTextView.text, memoDate: Date())
+                        
+            try! self.localRealm.write {
+                self.localRealm.add(task)
+                self.memoTableView.reloadData()
+                self.viewWillAppear(false) // 타이틀 수정하기 위해서
+            }
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -119,26 +152,9 @@ private extension ViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tableMemoCell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else {
-            return UITableViewCell()
-        }
-        return tableMemoCell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-}
-
 extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        allTasks = localRealm.objects(MemoList.self).filter("memoAll CONTAINS '\(searchController.searchBar.text!)'").sorted(byKeyPath: "memoDate", ascending: false)
+        tasks = localRealm.objects(MemoList.self).filter("memoAll CONTAINS '\(searchController.searchBar.text!)'").sorted(byKeyPath: "memoDate", ascending: false)
         searchText = searchController.searchBar.text!
     }
     
@@ -158,3 +174,120 @@ extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
 }
+
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasks?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "메모"
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let tableMemoCell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let row = tasks[indexPath.row]
+        
+        let format = DateFormatter()
+        format.dateFormat = "yyyy. MM. dd. a hh:mm"
+        
+        //calendar
+        let calendarDate = Calendar.current
+        //월요일 구하기
+        var component = calendarDate.dateComponents([.weekOfYear, .yearForWeekOfYear, .weekday], from: Date())
+        component.weekday = 2
+        let mondayWeek = calendarDate.date(from: component)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        formatter.locale = Locale(identifier:"ko_KR")
+        let tempRegDate = formatter.string(from: row.memoDate)
+        
+        for i in 0...6{
+            let week = calendarDate.date(byAdding: .day , value: i, to: mondayWeek!)
+            let weekStr = formatter.string(from: week!)
+            
+            if tempRegDate == weekStr{
+                format.dateFormat = "EEEE"
+            }
+        }
+        
+        format.locale = Locale(identifier: "ko_KR")
+        let memoDate = format.string(from: row.memoDate)
+        
+        tableMemoCell.memoTitleLabel.text = row.memoTitle
+        tableMemoCell.memoDateLabel.text = memoDate
+        tableMemoCell.memoContentLabel.text = row.memoContent
+        if isFiltering() && !searchBarIsEmpty() {
+            tableMemoCell.memoTitleLabel.highlight(searchText: searchText, color: .systemOrange)
+            tableMemoCell.memoContentLabel.highlight(searchText: searchText, color: .systemOrange)
+        } else if !isFiltering() {
+            tableMemoCell.memoTitleLabel.nohightlight(color: .label)
+            tableMemoCell.memoContentLabel.nohightlight(color: .lightGray)
+        }
+        
+        return tableMemoCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WriteMemoViewController") as! WriteMemoViewController
+        var taskUpdate = tasks[indexPath.row]
+        vc.memoContentAll = taskUpdate.memoAll
+        
+        vc.backActionHandler = {
+            var title = ""
+            var content = ""
+            
+            //공백일 경우
+            if vc.memoTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+                try! self.localRealm.write{
+                    self.localRealm.delete(taskUpdate) // 지우기
+                    tableView.reloadData()
+                    self.viewWillAppear(false)// 제목 수정하기위해
+                }
+                return
+            }
+            //수정했는데 같을 경우
+            else if taskUpdate.memoAll == vc.memoTextView.text{
+                return
+            }
+            // 한줄일 경우
+            else if !vc.memoTextView.text!.contains("\n"){
+                title = vc.memoTextView.text!
+            }
+            // 개행 있을 경우
+            else{
+                title = String(vc.memoTextView.text!.split(separator: "\n").first!) //첫번째 줄만
+                content = String(vc.memoTextView.text!.dropFirst(title.count+1)) // 제목 자르고 넣음
+            }
+                        
+            try! self.localRealm.write {
+                taskUpdate.memoTitle = title
+                taskUpdate.memoContent = content
+                taskUpdate.memoAll = vc.memoTextView.text
+                taskUpdate.memoDate = Date()
+            
+                self.memoTableView.reloadData()
+            }
+        }
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+

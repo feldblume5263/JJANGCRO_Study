@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class WriteMemoViewController: UIViewController {
+class WriteMemoViewController: UIViewController, UITextViewDelegate {
     // Realm을 시작하기 위한 코드
     let localRealm = try! Realm()
     var tasks: Results<MemoList>!
@@ -18,7 +18,7 @@ class WriteMemoViewController: UIViewController {
     var backActionHandler: (() -> ())?
     
     // 글을 적기 위한 텍스트뷰 셋팅
-    private var memoTextView: UITextView = {
+    var memoTextView: UITextView = {
         let view = UITextView()
         view.textInputView.backgroundColor = .white
         return view
@@ -26,6 +26,8 @@ class WriteMemoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoTextView.delegate = self
+        memoTextView.text = memoContentAll
         self.navigationController?.navigationBar.prefersLargeTitles = false
         addContent()
         
