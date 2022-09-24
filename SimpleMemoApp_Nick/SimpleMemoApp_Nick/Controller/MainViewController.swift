@@ -43,13 +43,25 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let writeMemoButotn = CustomActionButton(title: "square.and.pencil") {}
+    private lazy var writeMemoButotn = CustomActionButton(title: "square.and.pencil") {
+        self.touchUpInsideToWriteMemoButton()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTableView()
         render()
         configUI()
+        setTableView()
+        setButton()
+    }
+    
+    @objc
+    private func touchUpInsideToWriteMemoButton() {
+        print("HI")
+    }
+    
+    private func setButton() {
+        writeMemoButotn.addTarget(self, action: #selector(touchUpInsideToWriteMemoButton), for: .touchUpInside)
     }
     
     private func render() {
