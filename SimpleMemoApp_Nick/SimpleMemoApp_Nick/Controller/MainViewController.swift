@@ -57,6 +57,7 @@ class MainViewController: UIViewController {
     @objc
     private func touchUpInsideToWriteMemoButton() {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
+            viewController.delegate = self
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -121,5 +122,11 @@ extension MainViewController: UITableViewDelegate {
             """
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+}
+
+extension MainViewController: MemoDelegate {
+    func addMemoAtForm(data: MemoData) {
+        
     }
 }

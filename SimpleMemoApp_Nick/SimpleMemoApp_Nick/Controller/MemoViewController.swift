@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MemoDelegate: AnyObject {
+    func addMemoAtForm(data: MemoData)
+}
+
 class MemoViewController: UIViewController {
+    
+    weak var delegate: MemoDelegate?
 
     let memoTextView: UITextView = {
         let textView = UITextView()
@@ -33,6 +39,17 @@ class MemoViewController: UIViewController {
         super.viewDidLoad()
         render()
         configUI()
+    }
+    
+    private func returnToAddMemoAtFormButton() {
+        if let delegate = delegate {
+            let title = memoTextView.text ?? ""
+            let body = memoTextView.text ?? ""
+            let createdDate = Date()
+            if title.count > .zero && body.count > .zero {
+                delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
+            }
+        }
     }
     
     private func render() {
