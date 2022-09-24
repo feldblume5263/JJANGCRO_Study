@@ -43,6 +43,8 @@ class MainViewController: UIViewController {
         return label
     }()
     
+    private let writeMemoButotn = CustomActionButton(title: "square.and.pencil")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -61,6 +63,9 @@ class MainViewController: UIViewController {
         bottomBarView.addSubview(itemNumberLabel)
         itemNumberLabel.text = "\(memos.count) 개의 메모"
         itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
+        
+        bottomBarView.addSubview(writeMemoButotn)
+        writeMemoButotn.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
     }
     
     private func configUI() {
