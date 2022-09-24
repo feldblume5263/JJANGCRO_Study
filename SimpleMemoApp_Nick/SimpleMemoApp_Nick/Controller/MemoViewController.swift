@@ -78,6 +78,8 @@ class MemoViewController: UIViewController {
             if title.count > .zero {
                 delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
             }
+            
+            memoTextView.endEditing(true)
         }
     }
     
@@ -110,5 +112,8 @@ class MemoViewController: UIViewController {
 extension MemoViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         self.navigationItem.rightBarButtonItem = endEditingButton
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.navigationItem.setRightBarButton(nil, animated: true)
     }
 }
