@@ -52,16 +52,13 @@ class MainViewController: UIViewController {
         render()
         configUI()
         setTableView()
-        setButton()
     }
     
     @objc
     private func touchUpInsideToWriteMemoButton() {
-        print("HI")
-    }
-    
-    private func setButton() {
-        writeMemoButton.addTarget(self, action: #selector(touchUpInsideToWriteMemoButton), for: .touchUpInside)
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     private func render() {
