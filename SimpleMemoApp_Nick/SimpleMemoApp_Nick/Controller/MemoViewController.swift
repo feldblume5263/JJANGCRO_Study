@@ -34,14 +34,25 @@ class MemoViewController: UIViewController {
     private let addPhotoButton = CustomActionButton(title: "camera") {}
     private let showPencilKitButton = CustomActionButton(title: "pencil.tip.crop.circle") {}
     private let writeMemoButton = CustomActionButton(title: "square.and.pencil") {}
+    private lazy var endEditingButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpToAddMemoAtFormButton(_:)))
+        return button
+        
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
         configUI()
+        configDelegate()
     }
     
-    private func returnToAddMemoAtFormButton() {
+    private func configDelegate() {
+        memoTextView.delegate = self
+    }
+    
+    @objc
+    private func touchUpToAddMemoAtFormButton(_ sender: Any) {
         if let delegate = delegate {
             let title = memoTextView.text ?? ""
             let body = memoTextView.text ?? ""
@@ -49,6 +60,7 @@ class MemoViewController: UIViewController {
             if title.count > .zero && body.count > .zero {
                 delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
             }
+            print("엥?")
         }
     }
     
@@ -75,5 +87,11 @@ class MemoViewController: UIViewController {
     
     private func configUI() {
         self.navigationController?.navigationBar.tintColor = .systemYellow
+    }
+}
+
+extension MemoViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.navigationItem.rightBarButtonItem = endEditingButton
     }
 }

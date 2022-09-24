@@ -9,25 +9,15 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    private lazy var memoList = MemoList()
     
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    var memos: [MemoData] = [
-        MemoData(title: "Hi", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "Hello, I'm Seungyun", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "This is a memo clone coding project!", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "merong", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "wooooooo~~~~~~~~~~", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "Lovely Weather ☀️", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "We're going to be amazing developers 🧑🏻‍💻", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "Hi", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "Hello, I'm Seungyun", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "This is a memo clone coding project!", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "merong", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "wooooooo~~~~~~~~~~", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "Lovely Weather ☀️", body: "이것은 바디!!!", createdDate: Date()),
-        MemoData(title: "We're going to be amazing developers 🧑🏻‍💻", body: "이것은 바디!!!", createdDate: Date()),
-    ]
+    private lazy var memos: [MemoData] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     private let bottomBarView: UIView = {
         let view = UIView()
@@ -54,6 +44,10 @@ class MainViewController: UIViewController {
         setTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        memos = memoList.getMemoDatasByOrder()
+    }
+
     @objc
     private func touchUpInsideToWriteMemoButton() {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
@@ -127,6 +121,6 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: MemoDelegate {
     func addMemoAtForm(data: MemoData) {
-        
+        memoList.setNewMemoData(title: data.title, body: data.body, createdDate: data.createdDate)
     }
 }
