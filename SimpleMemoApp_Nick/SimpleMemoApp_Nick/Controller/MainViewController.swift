@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
         configUI()
     }
     
-    func render() {
+    private func render() {
         view.addSubview(tableView)
         tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
@@ -63,12 +63,13 @@ class MainViewController: UIViewController {
         itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
     }
     
-    func configUI() {
+    private func configUI() {
         view.backgroundColor = .systemBackground
         self.navigationItem.title = "메모"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    func setTableView() {
+    
+    private func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MemoTableViewCell.classForCoder(), forCellReuseIdentifier: "dataCell")
