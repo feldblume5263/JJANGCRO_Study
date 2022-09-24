@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let writeMemoButotn = CustomActionButton(title: "square.and.pencil")
+    private let writeMemoButotn = CustomActionButton(title: "square.and.pencil") {}
     
     override func viewDidLoad() {
         super.viewDidLoad()

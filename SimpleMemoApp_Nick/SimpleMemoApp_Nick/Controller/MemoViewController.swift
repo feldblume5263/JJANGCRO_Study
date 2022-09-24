@@ -24,10 +24,10 @@ class MemoViewController: UIViewController {
         return stackView
     }()
     
-    private let makeCheckListButton = CustomActionButton(title: "checklist")
-    private let addPhotoButton = CustomActionButton(title: "camera")
-    private let showPencilKitButton = CustomActionButton(title: "pencil.tip.crop.circle")
-    private let writeMemoButton = CustomActionButton(title: "square.and.pencil")
+    private let makeCheckListButton = CustomActionButton(title: "checklist") {}
+    private let addPhotoButton = CustomActionButton(title: "camera") {}
+    private let showPencilKitButton = CustomActionButton(title: "pencil.tip.crop.circle") {}
+    private let writeMemoButton = CustomActionButton(title: "square.and.pencil") {}
     
     override func viewDidLoad() {
         super.viewDidLoad()

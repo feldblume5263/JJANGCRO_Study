@@ -9,10 +9,14 @@ import UIKit
 
 class CustomActionButton: UIButton {
     
-    init(title: String) {
+    init(title: String, primaryAction: @escaping (() -> ())) {
         super.init(frame: CGRect.zero)
+        let buttonAction = UIAction { _ in
+            primaryAction()
+        }
         self.setImage(UIImage(systemName: title), for: .normal)
         self.tintColor = .systemYellow
+        self.addAction(buttonAction, for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
