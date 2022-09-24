@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private lazy var writeMemoButotn = CustomActionButton(title: "square.and.pencil") {
+    private lazy var writeMemoButton = CustomActionButton(title: "square.and.pencil") {
         self.touchUpInsideToWriteMemoButton()
     }
     
@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     }
     
     private func setButton() {
-        writeMemoButotn.addTarget(self, action: #selector(touchUpInsideToWriteMemoButton), for: .touchUpInside)
+        writeMemoButton.addTarget(self, action: #selector(touchUpInsideToWriteMemoButton), for: .touchUpInside)
     }
     
     private func render() {
@@ -76,8 +76,8 @@ class MainViewController: UIViewController {
         itemNumberLabel.text = "\(memos.count) 개의 메모"
         itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
         
-        bottomBarView.addSubview(writeMemoButotn)
-        writeMemoButotn.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
+        bottomBarView.addSubview(writeMemoButton)
+        writeMemoButton.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
     }
     
     private func configUI() {
