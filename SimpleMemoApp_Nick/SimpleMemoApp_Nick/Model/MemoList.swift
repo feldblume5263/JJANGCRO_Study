@@ -28,13 +28,12 @@ import Foundation
     }
     
     func getMemoDatasByOrder() -> [MemoData] {
-        print(memoDatas)
         return memoDatas.sorted {
             $0.createdDate < $1.createdDate
         }
     }
     
-    func setNewMemoData(title: String, body: String, createdDate: Date) {
+    func setNewMemoData(title: String, body: String?, createdDate: Date) {
         memoDatas.insert(MemoData(title: title, body: body, createdDate: createdDate))
     }
 }

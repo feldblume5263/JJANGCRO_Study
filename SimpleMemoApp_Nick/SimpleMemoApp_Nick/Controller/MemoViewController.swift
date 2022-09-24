@@ -54,13 +54,30 @@ class MemoViewController: UIViewController {
     @objc
     private func touchUpToAddMemoAtFormButton(_ sender: Any) {
         if let delegate = delegate {
-            let title = memoTextView.text ?? ""
-            let body = memoTextView.text ?? ""
+            var sentences = memoTextView.text.components(separatedBy: "\n")
+            while sentences.first == "" {
+                sentences.remove(at: 0)
+            }
+            var title: String = ""
+            var body: String? = ""
+
+            if sentences.count > 0 {
+                title = sentences[0]
+            }
+            
+            sentences.remove(at: 0)
+            while sentences.first == "" {
+                sentences.remove(at: 0)
+            }
+            
+            if sentences.count > 0 {
+                body = sentences[0]
+            }
             let createdDate = Date()
-            if title.count > .zero && body.count > .zero {
+            
+            if title.count > .zero {
                 delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
             }
-            print("엥?")
         }
     }
     
