@@ -14,6 +14,8 @@ protocol MemoDelegate: AnyObject {
 class MemoViewController: UIViewController {
     
     weak var delegate: MemoDelegate?
+    
+    var originalText: String = ""
 
     let memoTextView: UITextView = {
         let textView = UITextView()
@@ -61,7 +63,7 @@ class MemoViewController: UIViewController {
             var title: String = ""
             var body: String? = ""
 
-            if sentences.count > 0 {
+            if sentences.count > .zero {
                 title = sentences[0]
             }
             
@@ -70,12 +72,12 @@ class MemoViewController: UIViewController {
                 sentences.remove(at: 0)
             }
             
-            if sentences.count > 0 {
+            if sentences.count > .zero {
                 body = sentences[0]
             }
             let createdDate = Date()
             
-            if title.count > .zero {
+            if originalText != memoTextView.text && title.count > .zero {
                 delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
             }
             
@@ -110,7 +112,9 @@ class MemoViewController: UIViewController {
 }
 
 extension MemoViewController: UITextViewDelegate {
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
+        originalText = memoTextView.text
         self.navigationItem.rightBarButtonItem = endEditingButton
     }
     func textViewDidEndEditing(_ textView: UITextView) {
