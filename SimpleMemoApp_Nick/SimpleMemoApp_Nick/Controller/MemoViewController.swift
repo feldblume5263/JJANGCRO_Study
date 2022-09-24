@@ -24,33 +24,10 @@ class MemoViewController: UIViewController {
         return stackView
     }()
     
-    private let makeCheckListButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "checklist"), for: .normal)
-        button.tintColor = .systemYellow
-        return button
-    }()
-    
-    private let addPhotoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "camera"), for: UIControl.State.normal)
-        button.tintColor = .systemYellow
-        return button
-    }()
-    
-    private let showPencilKitButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "pencil.tip.crop.circle"), for: UIControl.State.normal)
-        button.tintColor = .systemYellow
-        return button
-    }()
-    
-    private let writeMemoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.pencil"), for: UIControl.State.normal)
-        button.tintColor = .systemYellow
-        return button
-    }()
+    private let makeCheckListButton = CustomActionButton(title: "checklist")
+    private let addPhotoButton = CustomActionButton(title: "camera")
+    private let showPencilKitButton = CustomActionButton(title: "pencil.tip.crop.circle")
+    private let writeMemoButton = CustomActionButton(title: "square.and.pencil")
     
     override func viewDidLoad() {
         super.viewDidLoad()
