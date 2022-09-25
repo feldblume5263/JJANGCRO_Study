@@ -106,16 +106,12 @@ final class MainViewController: UIViewController {
     private func touchUpInsideToChangeLayoutType() {
         if currentViewType == .table {
             currentViewType = .collection
-//            self.setLayoutType.title = "갤러리로 보기"
-//            self.setLayoutType.image = UIImage(systemName: "square.grid.2x2")
         } else {
             currentViewType = .table
-//            self.setLayoutType.title = "목록으로 보기"
-//            self.setLayoutType.image = UIImage(systemName: "list.bullet")
         }
     }
     
-    private lazy var setLayoutType = UIAction(title: "갤러리로 보기", image: UIImage(systemName: "square.grid.2x2"), handler: { _ in self.touchUpInsideToChangeLayoutType() })
+    private lazy var setLayoutType = UIAction(title: "뷰 변경", image: UIImage(systemName: "list.bullet"), handler: { _ in self.touchUpInsideToChangeLayoutType() })
     private lazy var sortByTitle = UIAction(title: "제목 순", image: UIImage(systemName: "t.square"), handler: { _ in self.touchUpInsideToShowOption(type: .title)})
     private lazy var sortByCreatedDate = UIAction(title: "생성일 순", image: UIImage(systemName: "calendar"), handler: { _ in self.touchUpInsideToShowOption(type: .createdDate) })
     private lazy var sortByRandom = UIAction(title: "랜덤 순", image: UIImage(systemName: "questionmark.circle"), handler: { _ in self.touchUpInsideToShowOption(type: .random) })
