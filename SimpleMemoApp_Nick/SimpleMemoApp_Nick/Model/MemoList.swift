@@ -11,20 +11,20 @@ import Foundation
     @objc dynamic var memoDatas = Set<MemoData>()
     
     override init() {
-        memoDatas.insert(MemoData(title: "Hi", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "Hello, I'm Seungyun", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "This is a memo clone coding project!", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "merong", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "wooooooo~~~~~~~~~~", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "Lovely Weather ☀️", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "We're going to be amazing developers 🧑🏻‍💻", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "Hi", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "Hello, I'm Seungyun", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "This is a memo clone coding project!", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "merong", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "wooooooo~~~~~~~~~~", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "Lovely Weather ☀️", body: "이것은 바디!!!", createdDate: Date()))
-        memoDatas.insert(MemoData(title: "We're going to be amazing developers 🧑🏻‍💻", body: "이것은 바디!!!", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Hi", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Hello, I'm Seungyun", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "This is a memo clone coding project!", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "merong", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "wooooooo~~~~~~~~~~", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Lovely Weather ☀️", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "We're going to be amazing developers 🧑🏻‍💻", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Hi", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Hello, I'm Seungyun", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "This is a memo clone coding project!", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "merong", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "wooooooo~~~~~~~~~~", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "Lovely Weather ☀️", createdDate: Date()))
+        memoDatas.insert(MemoData(memoText: "We're going to be amazing developers 🧑🏻‍💻", createdDate: Date()))
     }
     
     func getMemoDatasByOrder() -> [MemoData] {
@@ -33,7 +33,7 @@ import Foundation
         }
     }
     
-    func setNewMemoData(title: String, body: String?, createdDate: Date) {
-        memoDatas.insert(MemoData(title: title, body: body, createdDate: createdDate))
+    func setNewMemoData(memoText: String, createdDate: Date) {
+        memoDatas.insert(MemoData(memoText: memoText, createdDate: createdDate))
     }
 }

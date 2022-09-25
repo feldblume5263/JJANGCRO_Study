@@ -15,8 +15,6 @@ class MemoViewController: UIViewController {
     
     weak var delegate: MemoDelegate?
     
-    var originalText: String = ""
-
     let memoTextView: UITextView = {
         let textView = UITextView()
         textView.font = .preferredFont(forTextStyle: .body)
@@ -56,29 +54,11 @@ class MemoViewController: UIViewController {
     @objc
     private func touchUpToAddMemoAtFormButton(_ sender: Any) {
         if let delegate = delegate {
-            var sentences = memoTextView.text.components(separatedBy: "\n")
-            while sentences.first == "" {
-                sentences.remove(at: 0)
-            }
-            var title: String = ""
-            var body: String? = ""
-
-            if sentences.count > .zero {
-                title = sentences[0]
-            }
-            
-            sentences.remove(at: 0)
-            while sentences.first == "" {
-                sentences.remove(at: 0)
-            }
-            
-            if sentences.count > .zero {
-                body = sentences[0]
-            }
+            let memoText: String = memoTextView.text
             let createdDate = Date()
             
-            if originalText != memoTextView.text && title.count > .zero {
-                delegate.addMemoAtForm(data: MemoData(title: title, body: body, createdDate: createdDate))
+            if memoText.count > .zero {
+                delegate.addMemoAtForm(data: MemoData(memoText: memoText, createdDate: createdDate))
             }
             
             memoTextView.endEditing(true)
@@ -114,7 +94,6 @@ class MemoViewController: UIViewController {
 extension MemoViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        originalText = memoTextView.text
         self.navigationItem.rightBarButtonItem = endEditingButton
     }
     func textViewDidEndEditing(_ textView: UITextView) {

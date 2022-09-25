@@ -99,8 +99,29 @@ extension MainViewController: UITableViewDataSource {
         
         let createdDate = dateFormatter.string(from: memos[indexPath.row].createdDate)
         
-        cell.titleLabel.text = memos[indexPath.row].title
-        cell.bodyLabel.text = memos[indexPath.row].body
+        var tempMemo = memos[indexPath.row].memoText.components(separatedBy: "\n")
+        
+        while tempMemo.first == "" {
+            tempMemo.remove(at: 0)
+        }
+        
+        var title: String = "새로운 메모"
+        var body: String = "추가 텍스트 없음"
+        if !tempMemo.isEmpty {
+            title = tempMemo[0]
+        }
+        
+        tempMemo.remove(at: 0)
+        
+        if !tempMemo.isEmpty {
+            while tempMemo.first == "" {
+                tempMemo.remove(at: 0)
+            }
+            body = tempMemo[0]
+        }
+        
+        cell.titleLabel.text = title
+        cell.bodyLabel.text = body
         cell.createdDate.text = createdDate
         
         return cell
@@ -110,10 +131,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
-            viewController.memoTextView.text = """
-            \(memos[indexPath.row].title)
-            \(memos[indexPath.row].body)
-            """
+            viewController.memoTextView.text = "\(memos[indexPath.row].memoText)"
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -121,6 +139,6 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: MemoDelegate {
     func addMemoAtForm(data: MemoData) {
-        memoList.setNewMemoData(title: data.title, body: data.body, createdDate: data.createdDate)
+        memoList.setNewMemoData(memoText: data.memoText, createdDate: data.createdDate)
     }
 }

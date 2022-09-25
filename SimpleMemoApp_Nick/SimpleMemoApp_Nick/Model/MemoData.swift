@@ -8,13 +8,11 @@
 import Foundation
 
 @objc class MemoData: NSObject {
-    var title: String
-    var body: String?
+    var memoText: String
     var createdDate: Date
     
-    init(title: String, body: String?, createdDate: Date) {
-        self.title = title
-        self.body = body
+    init(memoText: String, createdDate: Date) {
+        self.memoText = memoText
         self.createdDate = createdDate
     }
 }
