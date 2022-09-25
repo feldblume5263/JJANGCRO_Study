@@ -25,7 +25,7 @@ final class MemoCollectionViewCell: UICollectionViewCell {
     var createdDate: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .caption2)
-        
+        label.textAlignment = .center
         return label
     }()
     
