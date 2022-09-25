@@ -15,13 +15,10 @@ class MainViewController: UIViewController {
         didSet {
             switch currentSortingType {
             case .title:
-                sortingTypeLabel.text = "제목 순"
                 memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
             case .createdDate:
-                sortingTypeLabel.text = "생성일 순"
                 memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
             case .random:
-                sortingTypeLabel.text = "랜덤"
                 memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
             }
         }
@@ -34,12 +31,6 @@ class MainViewController: UIViewController {
         }
     }
 
-    private let sortingTypeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "제목 순"
-        return label
-    }()
-    
     private let bottomBarView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -62,7 +53,7 @@ class MainViewController: UIViewController {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
                                      style: .plain,
                                      target: self,
-                                     action: #selector(touchUpInsideToShowOption))
+                                     action: nil)
         return button
     }()
     
@@ -71,21 +62,26 @@ class MainViewController: UIViewController {
         render()
         configUI()
         setTableView()
+        setOptionButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         memos = memoList.getMemoDatasByOrder(by: currentSortingType)
     }
     
-    @objc
-    private func touchUpInsideToShowOption() {
-        if self.currentSortingType == .title {
-            currentSortingType = .createdDate
-        } else if self.currentSortingType == .createdDate {
-            currentSortingType = .title
-        }
+//    @objc
+    private func touchUpInsideToShowOption(type: SortingType) {
+        currentSortingType = type
     }
-
+    
+    private lazy var sortByTitle = UIAction(title: "제목 순", image: UIImage(systemName: "t.square"), handler: { _ in self.touchUpInsideToShowOption(type: .title)})
+    private lazy var sortByCreatedDate = UIAction(title: "생성일 순", image: UIImage(systemName: "calendar"), handler: { _ in self.touchUpInsideToShowOption(type: .createdDate) })
+    private lazy var sortByRandom = UIAction(title: "랜덤 순", image: UIImage(systemName: "questionmark.circle"), handler: { _ in self.touchUpInsideToShowOption(type: .random) })
+    
+    private func setOptionButton () {
+        optionButton.menu = UIMenu(title: "", options: .displayInline, children: [sortByTitle, sortByCreatedDate, sortByRandom])
+    }
+    
     @objc
     private func touchUpInsideToWriteMemoButton() {
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
@@ -107,9 +103,6 @@ class MainViewController: UIViewController {
         
         bottomBarView.addSubview(writeMemoButton)
         writeMemoButton.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
-        
-        bottomBarView.addSubview(sortingTypeLabel)
-        sortingTypeLabel.constraint(top: bottomBarView.topAnchor, leading: bottomBarView.leadingAnchor)
     }
     
     private func configUI() {
