@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum SortingType {
+    case title
+    case createdDate
+    case random
+}
+
 @objc final class MemoList: NSObject {
     @objc dynamic var memoDatas = Set<MemoData>()
     
@@ -27,9 +33,18 @@ import Foundation
         memoDatas.insert(MemoData(memoText: "We're going to be amazing developers 🧑🏻‍💻", createdDate: Date()))
     }
     
-    func getMemoDatasByOrder() -> [MemoData] {
-        return memoDatas.sorted {
-            $0.createdDate < $1.createdDate
+    func getMemoDatasByOrder(by type: SortingType) -> [MemoData] {
+        switch type {
+        case .title:
+            return memoDatas.sorted {
+                $0.memoText < $1.memoText
+            }
+        case .createdDate:
+            return memoDatas.sorted {
+                $0.createdDate < $1.createdDate
+            }
+        case .random:
+            return memoDatas.shuffled()
         }
     }
     

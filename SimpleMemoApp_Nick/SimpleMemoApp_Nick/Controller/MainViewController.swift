@@ -9,16 +9,36 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    private lazy var memoList = MemoList()
-    
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    
+    private lazy var memoList = MemoList()
+    private var currentSortingType: SortingType = .title {
+        didSet {
+            switch currentSortingType {
+            case .title:
+                sortingTypeLabel.text = "제목 순"
+                memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
+            case .createdDate:
+                sortingTypeLabel.text = "생성일 순"
+                memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
+            case .random:
+                sortingTypeLabel.text = "랜덤"
+                memos = memoList.getMemoDatasByOrder(by: self.currentSortingType)
+            }
+        }
+    }
+    private var observer: NSKeyValueObservation!
     private lazy var memos: [MemoData] = [] {
         didSet {
             tableView.reloadData()
             itemNumberLabel.text = "\(memos.count) 개의 메모"
         }
     }
+
+    private let sortingTypeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "제목 순"
+        return label
+    }()
     
     private let bottomBarView: UIView = {
         let view = UIView()
@@ -38,6 +58,14 @@ class MainViewController: UIViewController {
         self.touchUpInsideToWriteMemoButton()
     }
     
+    private lazy var optionButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(touchUpInsideToShowOption))
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
@@ -46,7 +74,16 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        memos = memoList.getMemoDatasByOrder()
+        memos = memoList.getMemoDatasByOrder(by: currentSortingType)
+    }
+    
+    @objc
+    private func touchUpInsideToShowOption() {
+        if self.currentSortingType == .title {
+            currentSortingType = .createdDate
+        } else if self.currentSortingType == .createdDate {
+            currentSortingType = .title
+        }
     }
 
     @objc
@@ -70,18 +107,31 @@ class MainViewController: UIViewController {
         
         bottomBarView.addSubview(writeMemoButton)
         writeMemoButton.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
+        
+        bottomBarView.addSubview(sortingTypeLabel)
+        sortingTypeLabel.constraint(top: bottomBarView.topAnchor, leading: bottomBarView.leadingAnchor)
     }
     
     private func configUI() {
         view.backgroundColor = .systemBackground
         self.navigationItem.title = "메모"
+        self.navigationItem.rightBarButtonItem = optionButton
+        self.navigationController?.navigationBar.tintColor = .systemYellow
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setMemoListObserverToDataTableView() {
+        observer = memoList.observe(\.memoDatas) { (data, change) in
+            print(change)
+            self.memos = self.memoList.getMemoDatasByOrder(by: self.currentSortingType)
+        }
     }
     
     private func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MemoTableViewCell.classForCoder(), forCellReuseIdentifier: "dataCell")
+        setMemoListObserverToDataTableView()
     }
 }
 

@@ -37,7 +37,6 @@ class MemoViewController: UIViewController {
     private lazy var endEditingButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpToAddMemoAtFormButton(_:)))
         return button
-        
     }()
     
     override func viewDidLoad() {
