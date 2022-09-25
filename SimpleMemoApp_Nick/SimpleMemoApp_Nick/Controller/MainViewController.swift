@@ -154,7 +154,6 @@ final class MainViewController: UIViewController {
     
     private func setMemoListObserverToDataTableView() {
         observer = memoList.observe(\.memoDatas) { (data, change) in
-            print(change)
             self.memos = self.memoList.getMemoDatasByOrder(by: self.currentSortingType)
         }
     }
