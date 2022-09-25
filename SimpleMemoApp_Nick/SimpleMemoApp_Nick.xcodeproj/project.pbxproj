@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7902902628E0B2D700C1DEAD /* MemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7902902528E0B2D700C1DEAD /* MemoCollectionViewCell.swift */; };
 		7926BE3C28D2379900B300E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE3B28D2379900B300E2 /* AppDelegate.swift */; };
 		7926BE3E28D2379900B300E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE3D28D2379900B300E2 /* SceneDelegate.swift */; };
 		7926BE4028D2379900B300E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7926BE3F28D2379900B300E2 /* MainViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7902902528E0B2D700C1DEAD /* MemoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7926BE3828D2379900B300E2 /* SimpleMemoApp_Nick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMemoApp_Nick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7926BE3B28D2379900B300E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7926BE3D28D2379900B300E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				7926BE4128D2379900B300E2 /* Main.storyboard */,
 				7926BE5A28D2428000B300E2 /* MemoTableViewCell.swift */,
 				79B5FEF028DF637700E4E7D5 /* CustomActionButton.swift */,
+				7902902528E0B2D700C1DEAD /* MemoCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7902902628E0B2D700C1DEAD /* MemoCollectionViewCell.swift in Sources */,
 				79B5FEF128DF637700E4E7D5 /* CustomActionButton.swift in Sources */,
 				79D41E0428D864DB00DEB68D /* MemoViewController.swift in Sources */,
 				7926BE4028D2379900B300E2 /* MainViewController.swift in Sources */,

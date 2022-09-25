@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    let collectionView = UICollectionView(frame: .zero)
     private lazy var memoList = MemoList()
     private var currentSortingType: SortingType = .title {
         didSet {
@@ -61,7 +62,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         render()
         configUI()
-        setTableView()
+        configView()
         setOptionButton()
     }
     
@@ -69,7 +70,6 @@ class MainViewController: UIViewController {
         memos = memoList.getMemoDatasByOrder(by: currentSortingType)
     }
     
-//    @objc
     private func touchUpInsideToShowOption(type: SortingType) {
         currentSortingType = type
     }
@@ -120,10 +120,13 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func setTableView() {
+    private func configView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MemoTableViewCell.classForCoder(), forCellReuseIdentifier: "dataCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+//        collectionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
         setMemoListObserverToDataTableView()
     }
 }
@@ -179,6 +182,23 @@ extension MainViewController: UITableViewDelegate {
         }
     }
 }
+
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
+}
+
+extension MainViewController: UICollectionViewDelegate {
+    
+}
+
 
 extension MainViewController: MemoDelegate {
     func addMemoAtForm(data: MemoData) {
