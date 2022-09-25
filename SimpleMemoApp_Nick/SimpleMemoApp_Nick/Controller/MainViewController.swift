@@ -10,8 +10,25 @@ import UIKit
 class MainViewController: UIViewController {
 
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    let collectionView = UICollectionView(frame: .zero)
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 64)/3, height: 120)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
+    }()
+    
     private lazy var memoList = MemoList()
+    
+    private var currentViewType: LayoutType = .collection {
+        didSet {
+            render()
+        }
+    }
+    
     private var currentSortingType: SortingType = .title {
         didSet {
             switch currentSortingType {
@@ -74,12 +91,25 @@ class MainViewController: UIViewController {
         currentSortingType = type
     }
     
+    private func touchUpInsideToChangeLayoutType() {
+        if currentViewType == .table {
+            currentViewType = .collection
+//            self.setLayoutType.title = "갤러리로 보기"
+//            self.setLayoutType.image = UIImage(systemName: "square.grid.2x2")
+        } else {
+            currentViewType = .table
+//            self.setLayoutType.title = "목록으로 보기"
+//            self.setLayoutType.image = UIImage(systemName: "list.bullet")
+        }
+    }
+    
+    private lazy var setLayoutType = UIAction(title: "갤러리로 보기", image: UIImage(systemName: "square.grid.2x2"), handler: { _ in self.touchUpInsideToChangeLayoutType() })
     private lazy var sortByTitle = UIAction(title: "제목 순", image: UIImage(systemName: "t.square"), handler: { _ in self.touchUpInsideToShowOption(type: .title)})
     private lazy var sortByCreatedDate = UIAction(title: "생성일 순", image: UIImage(systemName: "calendar"), handler: { _ in self.touchUpInsideToShowOption(type: .createdDate) })
     private lazy var sortByRandom = UIAction(title: "랜덤 순", image: UIImage(systemName: "questionmark.circle"), handler: { _ in self.touchUpInsideToShowOption(type: .random) })
     
     private func setOptionButton () {
-        optionButton.menu = UIMenu(title: "", options: .displayInline, children: [sortByTitle, sortByCreatedDate, sortByRandom])
+        optionButton.menu = UIMenu(title: "", options: .displayInline, children: [setLayoutType, sortByTitle, sortByCreatedDate, sortByRandom])
     }
     
     @objc
@@ -91,8 +121,13 @@ class MainViewController: UIViewController {
     }
     
     private func render() {
-        view.addSubview(tableView)
-        tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        if currentViewType == .table {
+            view.addSubview(tableView)
+            tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        } else {
+            view.addSubview(collectionView)
+            collectionView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12))
+        }
         
         view.addSubview(bottomBarView)
         bottomBarView.constraint(leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
@@ -123,21 +158,21 @@ class MainViewController: UIViewController {
     private func configView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(MemoTableViewCell.classForCoder(), forCellReuseIdentifier: "dataCell")
+        tableView.register(MemoTableViewCell.self, forCellReuseIdentifier: "MemoTableViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+        collectionView.register(MemoCollectionViewCell.self, forCellWithReuseIdentifier: "MemoCollectionViewCell")
         setMemoListObserverToDataTableView()
     }
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        memos.count
+        return memos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -185,14 +220,34 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return memos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemoCollectionViewCell", for: indexPath) as? MemoCollectionViewCell else { return UICollectionViewCell() }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "MM/dd/yy"
+        
+        let createdDate = dateFormatter.string(from: memos[indexPath.row].createdDate)
+        
+        var tempMemo = memos[indexPath.row].memoText.components(separatedBy: "\n")
+        
+        while tempMemo.first == "" {
+            tempMemo.remove(at: 0)
+        }
+        
+        var title: String = "새로운 메모"
+        if !tempMemo.isEmpty {
+            title = tempMemo[0]
+        }
+        
+        cell.titleLabel.text = title
+        cell.createdDate.text = createdDate
+        
+        return cell
     }
-    
-    
 }
 
 extension MainViewController: UICollectionViewDelegate {

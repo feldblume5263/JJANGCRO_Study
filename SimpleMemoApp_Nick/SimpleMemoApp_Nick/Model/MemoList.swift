@@ -13,6 +13,11 @@ enum SortingType {
     case random
 }
 
+enum LayoutType {
+    case table
+    case collection
+}
+
 @objc final class MemoList: NSObject {
     @objc dynamic var memoDatas = Set<MemoData>()
     
