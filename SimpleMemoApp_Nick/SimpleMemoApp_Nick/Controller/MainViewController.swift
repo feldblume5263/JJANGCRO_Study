@@ -252,7 +252,12 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MemoView") as? MemoViewController {
+            viewController.memoTextView.text = "\(memos[indexPath.row].memoText)"
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 
