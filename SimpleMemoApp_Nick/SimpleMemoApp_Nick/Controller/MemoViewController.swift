@@ -11,7 +11,7 @@ protocol MemoDelegate: AnyObject {
     func addMemoAtForm(data: MemoData)
 }
 
-class MemoViewController: UIViewController {
+final class MemoViewController: UIViewController {
     
     weak var delegate: MemoDelegate?
     
