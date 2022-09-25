@@ -45,6 +45,7 @@ class MainViewController: UIViewController {
     private lazy var memos: [MemoData] = [] {
         didSet {
             tableView.reloadData()
+            collectionView.reloadData()
             itemNumberLabel.text = "\(memos.count) 개의 메모"
         }
     }
