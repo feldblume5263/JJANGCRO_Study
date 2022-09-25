@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var allTasks: Results<MemoList>!
     var searchController:  UISearchController!
     var searchText = ""
+    var count = 0
     
     // memoTableView 생성
     private let memoTableView: UITableView = {
@@ -31,7 +32,9 @@ class ViewController: UIViewController {
         var items: [UIBarButtonItem] = []
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let toolbarItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeMemoButtonClicked))
+        let sortButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down.circle"), style: .plain, target: self, action: #selector(sortButtonClicked))
         items.append(flexibleSpace)
+        items.append(sortButton)
         items.append(toolbarItem)
         items.forEach{ (item) in
             item.tintColor = .orange
@@ -72,6 +75,19 @@ class ViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
         tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "memoDate", ascending: false)
+        
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        print(documentsDirectory)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let memoCount = numberFormatter.string(for: localRealm.objects(MemoList.self).count)!
+        navigationItem.title = "\(memoCount)개의 메모"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        memoTableView.reloadData()
     }
     
     // layout lifeCycle은 크게 3가지로 나뉘어 지는데 Update -> layout -> Draw로 이루어져 있습니다.
@@ -119,8 +135,8 @@ class ViewController: UIViewController {
             }
             // 개행 있을 경우
             else{
-                title = String(vc.memoTextView.text!.split(separator: "\n").first!) //첫번째 줄만
-                content = String(vc.memoTextView.text!.dropFirst(title.count+1)) // 제목 자르고 넣음
+                title = String(vc.memoTextView.text!.split(separator: "\n").first!) 
+                content = String(vc.memoTextView.text!.dropFirst(title.count+1))
             }
             
             let task = MemoList(memoTitle: title, memoContent: content, memoAll: vc.memoTextView.text, memoDate: Date())
@@ -132,6 +148,18 @@ class ViewController: UIViewController {
             }
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func sortButtonClicked(_sender: Any) {
+        if count == 0 {
+            tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "memoDate", ascending: true)
+            memoTableView.reloadData()
+            count += 1
+        } else if count == 1 {
+            tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "memoDate", ascending: false)
+            memoTableView.reloadData()
+            count -= 1
+        }
     }
 
 }
@@ -154,8 +182,9 @@ private extension ViewController {
 
 extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        tasks = localRealm.objects(MemoList.self).filter("memoAll CONTAINS '\(searchController.searchBar.text!)'").sorted(byKeyPath: "memoDate", ascending: false)
+        allTasks = localRealm.objects(MemoList.self).filter("memoAll CONTAINS '\(searchController.searchBar.text!)'").sorted(byKeyPath: "memoDate", ascending: true)
         searchText = searchController.searchBar.text!
+        memoTableView.reloadData()
     }
     
     // 검색 버튼을 눌렀을 때 실행
@@ -287,6 +316,25 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var row = tasks[indexPath.row]
+        let alert = UIAlertController(title: row.memoTitle, message: "메모를 삭제할까요?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "예", style: .default) { (action) in
+            try! self.localRealm.write{
+                self.localRealm.delete(row)
+                self.memoTableView.reloadData()
+                self.viewWillAppear(false)
+            }
+            return
+        }
+        let noAction = UIAlertAction(title: "아니오", style: .cancel){ (action) in
+            return
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
