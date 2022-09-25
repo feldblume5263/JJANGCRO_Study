@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     private lazy var memos: [MemoData] = [] {
         didSet {
             tableView.reloadData()
+            itemNumberLabel.text = "\(memos.count) 개의 메모"
         }
     }
     
@@ -65,7 +66,6 @@ class MainViewController: UIViewController {
         bottomBarView.constraint(bottomBarView.heightAnchor, constant: 75)
         
         bottomBarView.addSubview(itemNumberLabel)
-        itemNumberLabel.text = "\(memos.count) 개의 메모"
         itemNumberLabel.constraint(top: bottomBarView.topAnchor, centerX: bottomBarView.centerXAnchor, padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
         
         bottomBarView.addSubview(writeMemoButton)
