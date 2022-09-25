@@ -17,15 +17,26 @@ class MainViewController: UIViewController {
         layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 64)/3, height: 120)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
     private lazy var memoList = MemoList()
     
-    private var currentViewType: LayoutType = .collection {
+    private var currentViewType: LayoutType = .table {
         didSet {
-            render()
+            switch currentViewType {
+            case .collection:
+                tableView.isHidden = true
+                collectionView.isHidden = false
+                view.insertSubview(collectionView, at: 0)
+                collectionView.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12))
+            case .table:
+                collectionView.isHidden = true
+                tableView.isHidden = false
+                view.insertSubview(tableView, at: 0)
+                tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            }
         }
     }
     
@@ -122,13 +133,8 @@ class MainViewController: UIViewController {
     }
     
     private func render() {
-        if currentViewType == .table {
-            view.addSubview(tableView)
-            tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        } else {
-            view.addSubview(collectionView)
-            collectionView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12))
-        }
+        view.addSubview(tableView)
+        tableView.constraint(top: view.topAnchor, leading: view.leadingAnchor,  bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         
         view.addSubview(bottomBarView)
         bottomBarView.constraint(leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
@@ -139,6 +145,7 @@ class MainViewController: UIViewController {
         
         bottomBarView.addSubview(writeMemoButton)
         writeMemoButton.constraint(top: bottomBarView.topAnchor, trailing: bottomBarView.trailingAnchor, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 20))
+        
     }
     
     private func configUI() {
