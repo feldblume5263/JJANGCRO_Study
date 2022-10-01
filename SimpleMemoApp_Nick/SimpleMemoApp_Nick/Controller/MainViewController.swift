@@ -9,8 +9,8 @@ import UIKit
 
 final class MainViewController: UIViewController {
 
-    let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    let collectionView: UICollectionView = {
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
@@ -87,6 +87,11 @@ final class MainViewController: UIViewController {
         return button
     }()
     
+    private lazy var setLayoutType = UIAction(title: "뷰 변경", image: UIImage(systemName: "list.bullet"), handler: { _ in self.touchUpInsideToChangeLayoutType() })
+    private lazy var sortByTitle = UIAction(title: "제목 순", image: UIImage(systemName: "t.square"), handler: { _ in self.touchUpInsideToShowOption(type: .title)})
+    private lazy var sortByCreatedDate = UIAction(title: "생성일 순", image: UIImage(systemName: "calendar"), handler: { _ in self.touchUpInsideToShowOption(type: .createdDate) })
+    private lazy var sortByRandom = UIAction(title: "랜덤 순", image: UIImage(systemName: "questionmark.circle"), handler: { _ in self.touchUpInsideToShowOption(type: .random) })
+
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
@@ -110,11 +115,6 @@ final class MainViewController: UIViewController {
             currentViewType = .table
         }
     }
-    
-    private lazy var setLayoutType = UIAction(title: "뷰 변경", image: UIImage(systemName: "list.bullet"), handler: { _ in self.touchUpInsideToChangeLayoutType() })
-    private lazy var sortByTitle = UIAction(title: "제목 순", image: UIImage(systemName: "t.square"), handler: { _ in self.touchUpInsideToShowOption(type: .title)})
-    private lazy var sortByCreatedDate = UIAction(title: "생성일 순", image: UIImage(systemName: "calendar"), handler: { _ in self.touchUpInsideToShowOption(type: .createdDate) })
-    private lazy var sortByRandom = UIAction(title: "랜덤 순", image: UIImage(systemName: "questionmark.circle"), handler: { _ in self.touchUpInsideToShowOption(type: .random) })
     
     private func setOptionButton () {
         optionButton.menu = UIMenu(title: "", options: .displayInline, children: [setLayoutType, sortByTitle, sortByCreatedDate, sortByRandom])
